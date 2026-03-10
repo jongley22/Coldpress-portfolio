@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sonder Studio — Interior Design, Christchurch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --cream:#F9F6F1;
+  --warm:#F2EDE4;
+  --text:#1A1A18;
+  --grey:#888880;
+  --light-grey:#C8C4BC;
+  --accent:#8B7355;
+  --border:rgba(26,26,24,0.08);
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+
+/* Grain */
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:0.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 5%;transition:background 0.4s,border-bottom 0.4s;}
+nav.scrolled{background:rgba(249,246,241,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px;}
+.nav-wordmark{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;letter-spacing:0.12em;color:var(--text);text-decoration:none;text-transform:uppercase;}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none;}
+.nav-links a{font-size:11px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--grey);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-contact{color:var(--text)!important;border-bottom:1px solid var(--text);}
+.nav-contact:hover{color:var(--accent)!important;border-color:var(--accent)!important;}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:72px;}
+.hero-left{display:flex;flex-direction:column;justify-content:flex-end;padding:5% 4rem 5% 5%;border-right:1px solid var(--border);}
+.hero-right{display:flex;flex-direction:column;justify-content:space-between;padding:5% 5% 5% 4rem;}
+.hero-kicker{font-size:10px;font-weight:400;letter-spacing:4px;text-transform:uppercase;color:var(--grey);margin-bottom:3rem;display:block;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3.5rem,6vw,7rem);line-height:1;letter-spacing:-0.01em;color:var(--text);margin-bottom:3rem;}
+.hero-title em{font-style:italic;color:var(--accent);}
+.hero-cta{display:inline-flex;align-items:center;gap:1.5rem;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--text);text-decoration:none;border-bottom:1px solid var(--text);padding-bottom:4px;align-self:flex-start;transition:color 0.2s,border-color 0.2s;}
+.hero-cta:hover{color:var(--accent);border-color:var(--accent);}
+.hero-scroll-num{font-family:'Cormorant Garamond',serif;font-size:6rem;font-weight:300;color:rgba(26,26,24,0.05);line-height:1;align-self:flex-end;}
+.hero-desc{font-size:0.95rem;color:var(--grey);line-height:1.8;max-width:320px;margin-top:auto;}
+.hero-featured{flex:1;display:flex;flex-direction:column;justify-content:flex-end;}
+.hero-img-placeholder{width:100%;flex:1;min-height:400px;background:var(--warm);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.hero-img-placeholder::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 70%, rgba(139,115,85,0.08), transparent 60%);}
+.hero-img-label{font-family:'Cormorant Garamond',serif;font-size:0.8rem;font-style:italic;color:var(--light-grey);letter-spacing:0.1em;}
+.hero-project-label{margin-top:1.2rem;display:flex;justify-content:space-between;align-items:flex-end;}
+.hero-project-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:300;color:var(--text);}
+.hero-project-type{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);}
+
+/* PROJECTS */
+.projects{padding:120px 5%;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:4rem;}
+.section-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.5rem,5vw,5rem);line-height:1;color:var(--text);}
+.section-title em{font-style:italic;color:var(--accent);}
+.section-link{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);text-decoration:none;border-bottom:1px solid var(--light-grey);padding-bottom:2px;transition:color 0.2s;}
+.section-link:hover{color:var(--text);}
+.project-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;}
+.project-card{position:relative;overflow:hidden;cursor:pointer;}
+.project-card:hover .project-info{transform:translateY(0);opacity:1;}
+.project-img{width:100%;background:var(--warm);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.project-img::before{content:'';position:absolute;inset:0;}
+.project-img-inner{font-family:'Cormorant Garamond',serif;font-size:0.8rem;font-style:italic;color:var(--light-grey);letter-spacing:0.1em;}
+.project-card:nth-child(1) .project-img{aspect-ratio:3/4;background:#EDE8DF;}
+.project-card:nth-child(2) .project-img{aspect-ratio:3/4;background:#E8E0D5;}
+.project-card:nth-child(3) .project-img{aspect-ratio:16/9;background:#E4DDD3;}
+.project-card:nth-child(4) .project-img{aspect-ratio:16/9;background:#EAE4DA;}
+.project-card:nth-child(3),.project-card:nth-child(4){grid-column:span 1;}
+.project-meta{padding:1.5rem 0;display:flex;justify-content:space-between;align-items:flex-start;}
+.project-meta-left{}
+.project-name{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:300;color:var(--text);display:block;margin-bottom:0.3rem;}
+.project-type{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--grey);}
+.project-year{font-size:11px;color:var(--light-grey);}
+.project-info{position:absolute;inset:0;background:rgba(26,26,24,0.85);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;opacity:0;transform:translateY(10px);transition:opacity 0.3s,transform 0.3s;}
+.project-info-name{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:300;color:white;margin-bottom:0.5rem;}
+.project-info-type{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+
+/* APPROACH */
+.approach{padding:120px 5%;background:var(--warm);border-top:1px solid var(--border);}
+.approach-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:8rem;align-items:start;}
+.approach-steps{display:flex;flex-direction:column;gap:3rem;margin-top:1rem;}
+.approach-step{padding-bottom:3rem;border-bottom:1px solid var(--border);}
+.approach-step:last-child{border-bottom:none;padding-bottom:0;}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:0.85rem;font-style:italic;color:var(--accent);margin-bottom:0.8rem;display:block;}
+.step-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:var(--text);margin-bottom:0.8rem;}
+.step-desc{font-size:0.88rem;color:var(--grey);line-height:1.75;}
+
+/* STUDIO */
+.studio-section{padding:120px 5%;}
+.studio-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;}
+.studio-img{width:100%;aspect-ratio:4/5;background:var(--warm);display:flex;align-items:center;justify-content:center;}
+.studio-img-label{font-family:'Cormorant Garamond',serif;font-size:0.8rem;font-style:italic;color:var(--light-grey);}
+.studio-body{}
+.studio-body p{font-size:1rem;color:var(--grey);line-height:1.85;margin-bottom:1.5rem;}
+.studio-body p:last-of-type{margin-bottom:2rem;}
+.studio-names{display:flex;gap:3rem;margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid var(--border);}
+.studio-name-item{}
+.studio-name{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:300;color:var(--text);display:block;margin-bottom:0.2rem;}
+.studio-role{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);}
+
+/* CONTACT */
+.contact{padding:120px 5%;background:var(--text);}
+.contact-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:start;}
+.contact-title{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2.5rem,5vw,5rem);line-height:1;color:var(--cream);margin-bottom:2rem;}
+.contact-title em{font-style:italic;color:rgba(249,246,241,0.4);}
+.contact-sub{font-size:0.95rem;color:rgba(249,246,241,0.4);line-height:1.75;max-width:360px;}
+.contact-form{display:flex;flex-direction:column;gap:2rem;}
+.cf-field{display:flex;flex-direction:column;gap:0.5rem;}
+.cf-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(249,246,241,0.3);}
+.cf-input,.cf-textarea{background:transparent;border:none;border-bottom:1px solid rgba(249,246,241,0.12);padding:0.75rem 0;font-family:'Inter',sans-serif;font-size:0.95rem;color:var(--cream);outline:none;transition:border-color 0.2s;}
+.cf-input::placeholder,.cf-textarea::placeholder{color:rgba(249,246,241,0.2);}
+.cf-input:focus,.cf-textarea:focus{border-bottom-color:rgba(249,246,241,0.4);}
+.cf-textarea{min-height:100px;resize:vertical;}
+.cf-submit{background:transparent;border:1px solid rgba(249,246,241,0.2);color:var(--cream);padding:0.9rem 2.5rem;font-family:'Inter',sans-serif;font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background 0.2s,border-color 0.2s;align-self:flex-start;margin-top:0.5rem;}
+.cf-submit:hover{background:rgba(249,246,241,0.06);border-color:rgba(249,246,241,0.4);}
+
+/* FOOTER */
+footer{background:var(--text);padding:0 5% 40px;border-top:1px solid rgba(249,246,241,0.06);}
+.footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:2rem 0;flex-wrap:wrap;gap:1rem;}
+.footer-wordmark{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:300;letter-spacing:0.15em;text-transform:uppercase;color:rgba(249,246,241,0.5);text-decoration:none;}
+.footer-copy{font-size:11px;color:rgba(249,246,241,0.2);}
+.footer-cp{font-size:11px;color:rgba(249,246,241,0.2);}
+.footer-cp a{color:rgba(249,246,241,0.3);text-decoration:none;border-bottom:1px solid rgba(249,246,241,0.12);transition:color 0.2s;}
+.footer-cp a:hover{color:rgba(249,246,241,0.6);}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr;padding-top:72px;}
+  .hero-right{display:none;}
+  .hero-left{padding:4rem 5%;border-right:none;}
+  .project-grid{grid-template-columns:1fr;}
+  .project-card:nth-child(1) .project-img,.project-card:nth-child(2) .project-img{aspect-ratio:4/3;}
+  .approach-inner{grid-template-columns:1fr;gap:4rem;}
+  .studio-inner{grid-template-columns:1fr;gap:4rem;}
+  .contact-inner{grid-template-columns:1fr;gap:4rem;}
+  .nav-links{display:none;}
+}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="#" class="nav-wordmark">Sonder Studio</a>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#studio">Studio</a></li>
+      <li><a href="#contact" class="nav-contact">Enquire</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-kicker">Interior Design · Christchurch, New Zealand</span>
+    <h1 class="hero-title">Spaces that<br>feel like <em>you</em><br>always lived<br>there.</h1>
+    <a href="#projects" class="hero-cta">View Our Work →</a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-featured">
+      <div class="hero-img-placeholder">
+        <span class="hero-img-label">Cashmere Residence, 2025</span>
+      </div>
+      <div class="hero-project-label">
+        <div>
+          <span class="hero-project-name">Cashmere Residence</span>
+          <span class="hero-project-type" style="display:block;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--grey);margin-top:0.2rem;">Full Interior · 2025</span>
+        </div>
+        <span style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--light-grey);">01 / 06</span>
+      </div>
+    </div>
+    <p class="hero-desc">We design interiors that are considered, liveable, and built to last — not for the photoshoot.</p>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <h2 class="section-title">Selected<br><em>work.</em></h2>
+      <a href="#" class="section-link">All Projects →</a>
+    </div>
+    <div class="project-grid">
+      <div class="project-card reveal" style="transition-delay:0.05s">
+        <div class="project-img"><span class="project-img-inner">Cashmere Residence</span></div>
+        <div class="project-info"><div class="project-info-name">Cashmere Residence</div><div class="project-info-type">Full Interior · Christchurch</div></div>
+        <div class="project-meta"><div class="project-meta-left"><span class="project-name">Cashmere Residence</span><span class="project-type">Full Interior</span></div><span class="project-year">2025</span></div>
+      </div>
+      <div class="project-card reveal" style="transition-delay:0.1s">
+        <div class="project-img"><span class="project-img-inner">Merivale Kitchen</span></div>
+        <div class="project-info"><div class="project-info-name">Merivale Kitchen</div><div class="project-info-type">Kitchen & Living · Christchurch</div></div>
+        <div class="project-meta"><div class="project-meta-left"><span class="project-name">Merivale Kitchen</span><span class="project-type">Kitchen & Living</span></div><span class="project-year">2024</span></div>
+      </div>
+      <div class="project-card reveal" style="transition-delay:0.15s">
+        <div class="project-img"><span class="project-img-inner">Terrace Lane Offices</span></div>
+        <div class="project-info"><div class="project-info-name">Terrace Lane Offices</div><div class="project-info-type">Commercial · Christchurch CBD</div></div>
+        <div class="project-meta"><div class="project-meta-left"><span class="project-name">Terrace Lane Offices</span><span class="project-type">Commercial Interior</span></div><span class="project-year">2024</span></div>
+      </div>
+      <div class="project-card reveal" style="transition-delay:0.2s">
+        <div class="project-img"><span class="project-img-inner">Sumner Bach</span></div>
+        <div class="project-info"><div class="project-info-name">Sumner Bach</div><div class="project-info-type">Holiday Home · Coastal</div></div>
+        <div class="project-meta"><div class="project-meta-left"><span class="project-name">Sumner Bach</span><span class="project-type">Holiday Home</span></div><span class="project-year">2023</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="approach" id="approach">
+  <div class="approach-inner section-inner" style="max-width:1200px;">
+    <div class="reveal">
+      <h2 class="section-title">How we<br><em>work.</em></h2>
+    </div>
+    <div class="approach-steps">
+      <div class="approach-step reveal" style="transition-delay:0.1s">
+        <span class="step-num">01</span>
+        <div class="step-title">Listen First</div>
+        <p class="step-desc">Before a single sketch, we spend time understanding how you actually live. Not how you think you should live. Not what you've seen on Pinterest. How you move through a room, what matters to you at 7am versus 7pm.</p>
+      </div>
+      <div class="approach-step reveal" style="transition-delay:0.15s">
+        <span class="step-num">02</span>
+        <div class="step-title">Concept & Develop</div>
+        <p class="step-desc">A single cohesive concept. We don't give you three options to choose from — we give you one direction that's right, and we explain exactly why. Then we develop it until it's ready to build.</p>
+      </div>
+      <div class="approach-step reveal" style="transition-delay:0.2s">
+        <span class="step-num">03</span>
+        <div class="step-title">Build & Oversee</div>
+        <p class="step-desc">We manage the build. We're on site. We care whether the gap between the shelf and the wall is 3mm or 8mm. You shouldn't have to.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="studio-section" id="studio">
+  <div class="studio-inner section-inner" style="max-width:1200px;">
+    <div class="studio-img reveal"><span class="studio-img-label">Sonder Studio, Christchurch</span></div>
+    <div>
+      <h2 class="section-title reveal" style="margin-bottom:2rem;">Two people.<br><em>One studio.</em></h2>
+      <div class="studio-body reveal" style="transition-delay:0.1s">
+        <p>Sonder is a small studio by design. We take on a limited number of projects each year so we can give every one our full attention. No junior designers. No account managers. You work with us directly, from the first call to the final installation.</p>
+        <p>We started Sonder because we believed interior design had become too much about performance and not enough about people. Every project we take on is one we'd be proud to live in ourselves.</p>
+      </div>
+      <div class="studio-names reveal" style="transition-delay:0.15s">
+        <div class="studio-name-item"><span class="studio-name">Clara Reid</span><span class="studio-role">Principal Designer</span></div>
+        <div class="studio-name-item"><span class="studio-name">Tom Ashford</span><span class="studio-role">Project Director</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-inner section-inner" style="max-width:1200px;">
+    <div class="reveal">
+      <h2 class="contact-title">Start a<br><em>conversation.</em></h2>
+      <p class="contact-sub">We take on a small number of projects each year. If you have something in mind, get in touch early — we'd love to hear about it.</p>
+    </div>
+    <div class="contact-form reveal" style="transition-delay:0.1s">
+      <div class="cf-field"><label class="cf-label">Your Name</label><input class="cf-input" type="text" placeholder="Your full name"></div>
+      <div class="cf-field"><label class="cf-label">Email</label><input class="cf-input" type="email" placeholder="your@email.com"></div>
+      <div class="cf-field"><label class="cf-label">Project Type</label><input class="cf-input" type="text" placeholder="e.g. Full interior, kitchen, commercial…"></div>
+      <div class="cf-field"><label class="cf-label">Tell us about your project</label><textarea class="cf-textarea" placeholder="Where is the property, what are you hoping to achieve, what's the timeline?"></textarea></div>
+      <button class="cf-submit">Send Enquiry →</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-wordmark">Sonder Studio</a>
+    <span class="footer-copy">© 2026 Sonder Studio. Christchurch, New Zealand.</span>
+    <span class="footer-cp">Site by <a href="https://coldpress.co.nz" target="_blank">Cold Press</a></span>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelector('.cf-submit').addEventListener('click',function(){this.textContent='Message sent.';this.style.borderColor='rgba(249,246,241,0.4)';});
+</script>
+</body>
+</html>
