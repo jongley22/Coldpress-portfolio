@@ -270,7 +270,7 @@ nav.scrolled {
 }
 
 .work-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
+  display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
 }
 
@@ -317,7 +317,9 @@ nav.scrolled {
 .work-meta-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.2rem; }
 .work-meta-desc { font-size: 0.85rem; color: var(--grey); line-height: 1.55; }
 
-@media (max-width: 768px) { .work-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1100px) { .work-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 768px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .work-grid { grid-template-columns: 1fr; } }
 
 /* ============================================================
    CASE STUDY MODAL
@@ -656,20 +658,7 @@ footer {
 
     <div class="work-grid">
 
-      <div class="work-card-wrap reveal" style="transition-delay:0.1s" data-project="formosa">
-        <div class="work-card" style="background:#2A7A72">
-          <div class="card-title">Formosa Foods<br>寶島食品</div>
-          <div class="card-sub">Made in Christchurch, for New Zealand.</div>
-          <div class="work-card-overlay"><span class="work-card-view-label">View project →</span></div>
-        </div>
-        <div class="work-meta">
-          <div class="work-meta-cat">B2B · Food Manufacturing</div>
-          <div class="work-meta-name">Formosa Foods</div>
-          <div class="work-meta-desc">A bilingual B2B website built to land national Bidfood distribution. English and Mandarin, made in Christchurch, for New Zealand.</div>
-        </div>
-      </div>
-
-      <div class="work-card-wrap reveal" style="transition-delay:0.2s" data-project="anchor">
+      <div class="work-card-wrap reveal" style="transition-delay:0.1s" data-project="anchor">
         <div class="work-card" style="background:#1B2340">
           <div style="font-size:0.75rem;font-weight:700;letter-spacing:4px;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:0.8rem;">anchor.cobba.nz</div>
           <div style="width:85%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;overflow:hidden;">
@@ -704,6 +693,71 @@ footer {
           <div class="work-meta-cat">Commerce · Sport</div>
           <div class="work-meta-name">Smooth Shafts Golf</div>
           <div class="work-meta-desc">A secondhand golf brand that needed to feel premium before anyone would spend $500 online.</div>
+        </div>
+      </div>
+
+      <div class="work-card-wrap reveal" style="transition-delay:0.35s" data-project="tahuna">
+        <div class="work-card" style="background:linear-gradient(135deg,#1a1200,#2a1e00)">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:0.08em;color:rgba(201,168,76,0.6);margin-bottom:0.5rem;">TĀHUNA</div>
+          <div class="card-sub" style="color:rgba(201,168,76,0.4);">Queenstown, NZ</div>
+          <div class="work-card-overlay"><span class="work-card-view-label">View project →</span></div>
+        </div>
+        <div class="work-meta">
+          <div class="work-meta-cat">Hospitality · Craft Beer</div>
+          <div class="work-meta-name">Tāhuna Brewing Co.</div>
+          <div class="work-meta-desc">A Queenstown brewery that needed to match the mountain it sits beneath. Dark, editorial, uncompromising.</div>
+        </div>
+      </div>
+
+      <div class="work-card-wrap reveal" style="transition-delay:0.4s" data-project="sonder">
+        <div class="work-card" style="background:#EDE8DF">
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-style:italic;letter-spacing:0.05em;color:rgba(26,26,24,0.35);margin-bottom:0.5rem;">Sonder</div>
+          <div class="card-sub" style="color:rgba(26,26,24,0.3);">Interior Design</div>
+          <div class="work-card-overlay"><span class="work-card-view-label">View project →</span></div>
+        </div>
+        <div class="work-meta">
+          <div class="work-meta-cat">Interior Design · Studio</div>
+          <div class="work-meta-name">Sonder Studio</div>
+          <div class="work-meta-desc">A Christchurch interior design studio. Minimal, serif, no stock photography. Looks as good as the spaces they create.</div>
+        </div>
+      </div>
+
+      <div class="work-card-wrap reveal" style="transition-delay:0.45s" data-project="blackfern">
+        <div class="work-card" style="background:linear-gradient(135deg,#0e1a0a,#1a2d12)">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.1rem;letter-spacing:0.08em;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:0.5rem;">BLACKFERN</div>
+          <div class="card-sub" style="color:rgba(255,255,255,0.2);">Performance Apparel</div>
+          <div class="work-card-overlay"><span class="work-card-view-label">View project →</span></div>
+        </div>
+        <div class="work-meta">
+          <div class="work-meta-cat">Apparel · Performance</div>
+          <div class="work-meta-name">Blackfern Athletic</div>
+          <div class="work-meta-desc">A NZ performance apparel brand. Technical, dark, serious — a site that earns the $340 jacket before anyone reads the spec sheet.</div>
+        </div>
+      </div>
+
+      <div class="work-card-wrap reveal" style="transition-delay:0.5s" data-project="commonground">
+        <div class="work-card" style="background:linear-gradient(135deg,#1A0F0A,#2D1810)">
+          <div style="font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:rgba(196,124,58,0.6);margin-bottom:0.5rem;">Common Ground</div>
+          <div class="card-sub" style="color:rgba(196,124,58,0.3);">Specialty Coffee</div>
+          <div class="work-card-overlay"><span class="work-card-view-label">View project →</span></div>
+        </div>
+        <div class="work-meta">
+          <div class="work-meta-cat">Hospitality · Wholesale</div>
+          <div class="work-meta-name">Common Ground Coffee</div>
+          <div class="work-meta-desc">A Christchurch specialty roaster built to convert cafés as much as retail customers. Warm, story-led, detail-obsessed.</div>
+        </div>
+      </div>
+
+      <div class="work-card-wrap reveal" style="transition-delay:0.55s" data-project="laylo">
+        <div class="work-card" style="background:linear-gradient(135deg,#1A3D4F,#0D2535)">
+          <div style="font-family:'DM Serif Display',serif;font-size:1.5rem;font-style:italic;color:rgba(242,235,217,0.4);margin-bottom:0.5rem;">Laylo</div>
+          <div class="card-sub" style="color:rgba(242,235,217,0.25);">Surf & Lifestyle</div>
+          <div class="work-card-overlay"><span class="work-card-view-label">View project →</span></div>
+        </div>
+        <div class="work-meta">
+          <div class="work-meta-cat">Commerce · Surf Lifestyle</div>
+          <div class="work-meta-name">Laylo Surf</div>
+          <div class="work-meta-desc">Started in a van, sold out in four days. A NZ surf DTC brand with a voice that sounds like it came from the water.</div>
         </div>
       </div>
 
@@ -749,7 +803,7 @@ footer {
           <p class="label contact-info-label">Based in</p>
           <p class="contact-info-val">Christchurch, New Zealand</p>
           <p class="label contact-info-label">Email</p>
-          <p class="contact-info-val"><a href="mailto:mitchell@coldpress.co.nz">mitchell@coldpress.co.nz</a></p>
+          <p class="contact-info-val"><a href="/cdn-cgi/l/email-protection#34595d40575c51585874575b585044465147471a575b1a5a4e"><span class="__cf_email__" data-cfemail="533e3a27303b363f3f13303c3f3723213620207d303c7d3d29">[email&#160;protected]</span></a></p>
           <p class="label contact-info-label">Response time</p>
           <p class="contact-info-val">Same day. Always.</p>
         </div>
@@ -831,7 +885,7 @@ footer {
       <p class="footer-sub">Mitch Corkery & Josh Ongley</p>
     </div>
     <div class="footer-right">
-      <a href="mailto:mitchell@coldpress.co.nz">mitchell@coldpress.co.nz</a>
+      <a href="/cdn-cgi/l/email-protection#137e7a67707b767f7f53707c7f7763617660603d707c3d7d69"><span class="__cf_email__" data-cfemail="98f5f1ecfbf0fdf4f4d8fbf7f4fce8eafdebebb6fbf7b6f6e2">[email&#160;protected]</span></a>
       <p class="footer-copy">Christchurch, NZ · 2026</p>
     </div>
   </div>
@@ -860,7 +914,7 @@ footer {
 </div>
 
 <!-- Three.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <script>
 /* ============================================================
@@ -1043,13 +1097,6 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
    CASE STUDY DATA
    ============================================================ */
 const projects = {
-  formosa: {
-    bg: '#2A7A72', cat: 'B2B · Food Manufacturing',
-    title: 'Formosa Foods 寶島食品',
-    desc: 'Christchurch\'s leading Chinese food manufacturer needed a website before their national Bidfood distribution went live. We built a bilingual B2B site in one night — English and Mandarin, credible enough for procurement buyers who\'d never heard of them, warm enough for the family behind it.',
-    tags: ['Website Design', 'Bilingual EN/ZH', 'B2B', 'Mobile Optimised', 'Same-night delivery'],
-    link: 'https://formosa.coldpress.co.nz'
-  },
   anchor: {
     bg: '#1B2340', cat: 'Product · SaaS',
     title: 'anchor.cobba.nz',
@@ -1063,6 +1110,41 @@ const projects = {
     desc: 'A secondhand golf brand that needed to feel premium before anyone would spend $500 online. E-commerce site paired with a live Meta ads campaign — every dollar of spend landing on a page built to earn it.',
     tags: ['E-commerce', 'Meta Ads', 'Google Ads', 'Branding', 'Conversion Optimised'],
     link: 'https://smoothshaftsgolf.co.nz'
+  },
+  tahuna: {
+    bg: '#1a1200', cat: 'Hospitality · Craft Beer',
+    title: 'Tāhuna Brewing Co.',
+    desc: 'A Queenstown craft brewery built for people who take their beer as seriously as their mountains. Dark editorial design system, full product range, taproom info, and a brand that earns its price point before anyone reads the label.',
+    tags: ['Brand Identity', 'Website Design', 'Editorial Layout', 'Product Showcase', 'Dark UI'],
+    link: 'https://coldpress.co.nz/portfolio/tahuna-brewing'
+  },
+  sonder: {
+    bg: '#2a2418', cat: 'Interior Design · Studio',
+    title: 'Sonder Studio',
+    desc: 'A small Christchurch interior design studio that works with a very short client list by design. The brief was simple: look as good as the spaces they create. Serif editorial type, cream palette, no stock photography, no noise.',
+    tags: ['Website Design', 'Editorial Layout', 'Enquiry Flow', 'Brand Voice', 'Minimal UI'],
+    link: 'https://coldpress.co.nz/portfolio/sonder-studio'
+  },
+  blackfern: {
+    bg: '#0e1a0a', cat: 'Apparel · Performance',
+    title: 'Blackfern Athletic',
+    desc: 'NZ performance apparel built for people who actually use it. The site had to earn a $340 jacket without a single lifestyle photo. Technical specs, brand story, product grid — every section doing real commercial work.',
+    tags: ['E-commerce Design', 'Brand Identity', 'Technical Copywriting', 'Dark UI', 'Conversion Optimised'],
+    link: 'https://coldpress.co.nz/portfolio/blackfern-athletic'
+  },
+  commonground: {
+    bg: '#2D1810', cat: 'Hospitality · Wholesale',
+    title: 'Common Ground Coffee',
+    desc: 'A Christchurch specialty roaster with a café on Lichfield Street and wholesale accounts they wanted more of. Warm, story-led design built to convert hospitality buyers as much as retail customers.',
+    tags: ['Website Design', 'Wholesale Funnel', 'Brand Voice', 'Editorial Copy', 'Warm UI'],
+    link: 'https://coldpress.co.nz/portfolio/common-ground-coffee'
+  },
+  laylo: {
+    bg: '#1A3D4F', cat: 'Commerce · Surf Lifestyle',
+    title: 'Laylo Surf',
+    desc: 'Started in a van in 2021. By 2023 they were selling out in four days. Laylo needed a site that matched the brand — editorial, sun-bleached, confident. DTC e-commerce with a brand voice that sounds like it came from the water.',
+    tags: ['E-commerce Design', 'Brand Identity', 'DTC Strategy', 'Editorial Layout', 'Lifestyle Copy'],
+    link: 'https://coldpress.co.nz/portfolio/laylo-surf'
   }
 };
 
@@ -1162,13 +1244,3 @@ document.getElementById('contactForm').addEventListener('submit', async e => {
   btn.textContent = 'Sending…'; btn.disabled = true;
   try {
     const res = await fetch(e.target.action, { method: 'POST', body: new FormData(e.target), headers: { 'Accept': 'application/json' } });
-    if (res.ok) {
-      document.getElementById('contactForm').style.display = 'none';
-      document.querySelector('.form-progress-bar').style.display = 'none';
-      document.getElementById('formConfirm').style.display = 'block';
-    } else { btn.textContent = 'Try again'; btn.disabled = false; }
-  } catch { btn.textContent = 'Try again'; btn.disabled = false; }
-});
-</script>
-</body>
-</html>
