@@ -1,1 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Laylo Surf — New Zealand</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --sand:#F2EBD9;
+  --warm:#E8DCC4;
+  --stone:#C4B898;
+  --clay:#8C7A5C;
+  --ocean:#1A3D4F;
+  --deep:#0D2535;
+  --text:#1A1A16;
+  --grey:#8A8478;
+  --border:rgba(26,26,22,0.08);
+  --accent:#3B8FAB;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Space Grotesk',sans-serif;background:var(--sand);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:0.02;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;}
 
+/* NAV */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 5%;transition:background 0.4s,border-bottom 0.4s;}
+#mainNav.scrolled{background:rgba(242,235,217,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1300px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:68px;}
+.nav-wordmark{font-family:'DM Serif Display',serif;font-size:1.4rem;font-style:italic;color:var(--text);text-decoration:none;letter-spacing:-0.01em;}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none;}
+.nav-links a{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--grey);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--text);}
+.nav-shop{color:var(--text)!important;border-bottom:2px solid var(--text);}
+.nav-shop:hover{color:var(--accent)!important;border-color:var(--accent)!important;}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:68px;overflow:hidden;}
+.hero-left{padding:6% 4rem 6% 5%;display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid var(--border);}
+.hero-right{background:var(--ocean);position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:3rem;}
+/* Ocean waves bg effect */
+.hero-right::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 70%, rgba(59,143,171,0.3) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(13,37,53,0.8) 0%, transparent 60%);}
+.hero-top{display:flex;flex-direction:column;gap:0.5rem;}
+.hero-kicker{font-size:10px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--clay);}
+.hero-title{font-family:'DM Serif Display',serif;font-size:clamp(4rem,8vw,9rem);line-height:0.9;color:var(--text);letter-spacing:-0.02em;margin-top:2rem;}
+.hero-title em{font-style:italic;}
+.hero-mid{max-width:340px;}
+.hero-desc{font-size:1rem;color:var(--grey);line-height:1.8;}
+.hero-ctas{display:flex;flex-direction:column;gap:1rem;margin-top:2rem;}
+.btn-dark{background:var(--text);color:var(--sand);padding:0.9rem 2rem;font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;text-decoration:none;display:inline-block;transition:background 0.2s;}
+.btn-dark:hover{background:#2d2d28;}
+.btn-text{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--grey);text-decoration:none;border-bottom:1px solid var(--stone);padding-bottom:2px;display:inline-block;transition:color 0.2s;}
+.btn-text:hover{color:var(--text);}
+/* Right side content */
+.hero-right-content{position:relative;z-index:1;}
+.hero-right-label{font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:rgba(242,235,217,0.4);margin-bottom:0.5rem;display:block;}
+.hero-right-title{font-family:'DM Serif Display',serif;font-size:2.5rem;font-style:italic;color:var(--sand);line-height:1.1;margin-bottom:0.5rem;}
+.hero-right-sub{font-size:0.85rem;color:rgba(242,235,217,0.4);}
+.hero-right-waves{position:absolute;bottom:0;left:0;right:0;height:120px;overflow:hidden;}
+.wave-line{position:absolute;width:200%;height:2px;background:rgba(242,235,217,0.06);}
+.wave-line:nth-child(1){bottom:30px;animation:wave1 8s linear infinite;}
+.wave-line:nth-child(2){bottom:50px;animation:wave1 12s linear infinite reverse;opacity:0.6;}
+.wave-line:nth-child(3){bottom:70px;animation:wave1 6s linear infinite;opacity:0.3;}
+@keyframes wave1{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+.hero-feature-tag{position:absolute;top:2.5rem;right:2.5rem;background:rgba(242,235,217,0.1);border:1px solid rgba(242,235,217,0.15);backdrop-filter:blur(8px);padding:0.8rem 1.2rem;text-align:center;}
+.hero-feature-tag-num{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--sand);display:block;line-height:1;}
+.hero-feature-tag-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(242,235,217,0.4);}
+
+/* COLLECTION GRID */
+.collection{padding:100px 5%;}
+.section-inner{max-width:1300px;margin:0 auto;}
+.section-row{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3.5rem;}
+.section-title{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,5vw,5rem);line-height:1;color:var(--text);}
+.section-title em{font-style:italic;}
+.section-action{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--grey);text-decoration:none;border-bottom:1px solid var(--stone);padding-bottom:2px;transition:color 0.2s;}
+.section-action:hover{color:var(--text);}
+.collection-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:1.5rem;}
+.col-card{position:relative;overflow:hidden;cursor:pointer;}
+.col-card:hover .col-overlay{opacity:1;}
+.col-visual{width:100%;background:var(--warm);display:flex;align-items:center;justify-content:center;position:relative;}
+.col-card:nth-child(1) .col-visual{aspect-ratio:2/3;background:linear-gradient(160deg,#e8dcc4,#d4c8a8);}
+.col-card:nth-child(2) .col-visual{aspect-ratio:3/4;background:linear-gradient(160deg,#d4c8a8,#c4b898);}
+.col-card:nth-child(3) .col-visual{aspect-ratio:3/4;background:linear-gradient(160deg,#1a3d4f,#0d2535);}
+.col-visual-label{font-family:'DM Serif Display',serif;font-size:0.85rem;font-style:italic;color:rgba(26,26,22,0.2);}
+.col-card:nth-child(3) .col-visual-label{color:rgba(242,235,217,0.2);}
+.col-overlay{position:absolute;inset:0;background:rgba(26,26,22,0.6);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.3s;}
+.col-overlay-cta{font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--sand);border:1px solid rgba(242,235,217,0.4);padding:0.7rem 1.5rem;}
+.col-tag{position:absolute;top:1rem;left:1rem;background:var(--sand);padding:0.2rem 0.7rem;font-size:9px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text);}
+.col-meta{padding:1rem 0;display:flex;justify-content:space-between;align-items:flex-start;}
+.col-name{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--text);}
+.col-price{font-size:0.88rem;color:var(--grey);}
+
+/* VALUES */
+.values{padding:100px 5%;background:var(--ocean);overflow:hidden;}
+.values-inner{max-width:1300px;margin:0 auto;}
+.values-title{font-family:'DM Serif Display',serif;font-size:clamp(2.5rem,5vw,5.5rem);line-height:1;color:var(--sand);margin-bottom:5rem;}
+.values-title em{font-style:italic;color:rgba(242,235,217,0.4);}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(242,235,217,0.06);}
+.value-card{padding:3rem 2.5rem;background:transparent;}
+.value-num{font-size:0.75rem;font-weight:500;letter-spacing:3px;color:rgba(242,235,217,0.2);margin-bottom:1.5rem;display:block;}
+.value-title{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--sand);margin-bottom:1rem;}
+.value-desc{font-size:0.88rem;color:rgba(242,235,217,0.4);line-height:1.75;}
+
+/* ABOUT */
+.about{padding:100px 5%;}
+.about-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;}
+.about-img{aspect-ratio:3/4;background:var(--warm);display:flex;align-items:center;justify-content:center;}
+.about-img-label{font-family:'DM Serif Display',serif;font-size:0.85rem;font-style:italic;color:rgba(26,26,22,0.2);}
+.about-body{}
+.about-body p{font-size:1rem;color:var(--grey);line-height:1.85;margin-bottom:1.5rem;}
+.about-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid var(--border);}
+.about-tag{font-size:10px;font-weight:500;letter-spacing:2px;text-transform:uppercase;padding:0.3rem 0.8rem;border:1px solid var(--border);color:var(--grey);}
+
+/* FOOTER */
+footer{background:var(--deep);padding:60px 5% 30px;}
+.footer-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;margin-bottom:3rem;}
+.footer-wordmark{font-family:'DM Serif Display',serif;font-size:1.2rem;font-style:italic;color:var(--sand);display:block;margin-bottom:0.5rem;}
+.footer-tagline{font-size:0.82rem;color:rgba(242,235,217,0.25);line-height:1.7;max-width:240px;}
+.footer-col-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(242,235,217,0.2);margin-bottom:1.2rem;display:block;}
+.footer-links{display:flex;flex-direction:column;gap:0.6rem;}
+.footer-links a{font-size:0.85rem;color:rgba(242,235,217,0.35);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--sand);}
+.footer-bottom{max-width:1300px;margin:0 auto;padding-top:2rem;border-top:1px solid rgba(242,235,217,0.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:11px;color:rgba(242,235,217,0.2);}
+.footer-cp{font-size:11px;color:rgba(242,235,217,0.2);}
+.footer-cp a{color:rgba(242,235,217,0.3);text-decoration:none;border-bottom:1px solid rgba(242,235,217,0.12);}
+.footer-cp a:hover{color:var(--sand);}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){
+  .nav-links{display:none;}
+  .hero{grid-template-columns:1fr;}
+  .hero-right{min-height:300px;}
+  .collection-grid{grid-template-columns:1fr 1fr;}
+  .col-card:nth-child(1){grid-column:span 2;}
+  .values-grid{grid-template-columns:1fr;}
+  .about-inner{grid-template-columns:1fr;gap:4rem;}
+  .footer-inner{grid-template-columns:1fr;gap:2rem;}
+}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="#" class="nav-wordmark">Laylo</a>
+    <ul class="nav-links">
+      <li><a href="#collection">Collection</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#" class="nav-shop">Shop</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-top">
+      <span class="hero-kicker">New Zealand Surf & Lifestyle</span>
+      <h1 class="hero-title">Sun.<br>Salt.<br><em>Laylo.</em></h1>
+    </div>
+    <div class="hero-mid">
+      <p class="hero-desc">Made for the coast. Worn everywhere else. Surf-inspired clothing for New Zealanders who live close to the water.</p>
+      <div class="hero-ctas">
+        <a href="#collection" class="btn-dark">Shop Collection</a>
+        <a href="#about" class="btn-text">Our Story →</a>
+      </div>
+    </div>
+    <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--stone);">Free shipping NZ · Returns always free</div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-right-waves">
+      <div class="wave-line"></div>
+      <div class="wave-line"></div>
+      <div class="wave-line"></div>
+    </div>
+    <div class="hero-feature-tag">
+      <span class="hero-feature-tag-num">SS26</span>
+      <span class="hero-feature-tag-label">New Season</span>
+    </div>
+    <div class="hero-right-content">
+      <span class="hero-right-label">Featured Drop</span>
+      <div class="hero-right-title">The Offshore<br>Collection</div>
+      <p class="hero-right-sub">28 pieces. Inspired by a summer on the West Coast.</p>
+    </div>
+  </div>
+</section>
+
+<section class="collection" id="collection">
+  <div class="section-inner">
+    <div class="section-row reveal">
+      <h2 class="section-title">New<br><em>season.</em></h2>
+      <a href="#" class="section-action">All Products →</a>
+    </div>
+    <div class="collection-grid">
+      <div class="col-card reveal" style="transition-delay:0.05s">
+        <div class="col-visual">
+          <div class="col-tag">New</div>
+          <span class="col-visual-label">Offshore Boardshort</span>
+          <div class="col-overlay"><span class="col-overlay-cta">Quick View</span></div>
+        </div>
+        <div class="col-meta"><span class="col-name">Offshore Boardshort</span><span class="col-price">$120</span></div>
+      </div>
+      <div class="col-card reveal" style="transition-delay:0.1s">
+        <div class="col-visual">
+          <span class="col-visual-label">West Coast Tee</span>
+          <div class="col-overlay"><span class="col-overlay-cta">Quick View</span></div>
+        </div>
+        <div class="col-meta"><span class="col-name">West Coast Tee</span><span class="col-price">$75</span></div>
+      </div>
+      <div class="col-card reveal" style="transition-delay:0.15s">
+        <div class="col-visual">
+          <div class="col-tag">Best Seller</div>
+          <span class="col-visual-label" style="color:rgba(242,235,217,0.2);">The Laylo Hoodie</span>
+          <div class="col-overlay"><span class="col-overlay-cta">Quick View</span></div>
+        </div>
+        <div class="col-meta"><span class="col-name">Laylo Hoodie</span><span class="col-price">$185</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="values" id="values">
+  <div class="values-inner">
+    <h2 class="values-title reveal">Made for the<br><em>water people.</em></h2>
+    <div class="values-grid">
+      <div class="value-card reveal" style="transition-delay:0.05s">
+        <span class="value-num">01</span>
+        <div class="value-title">Cut for movement</div>
+        <p class="value-desc">Every garment is fit-tested by people who actually surf. Not models in a studio. People in the water at Piha at 6am who will tell you if the waistband is wrong.</p>
+      </div>
+      <div class="value-card reveal" style="transition-delay:0.1s">
+        <span class="value-num">02</span>
+        <div class="value-title">Built to last</div>
+        <p class="value-desc">We don't do fast fashion. Our board shorts are stitched with SEAQUAL ocean plastic thread. Our tees are 100% organic cotton. Built for 10 seasons, not one.</p>
+      </div>
+      <div class="value-card reveal" style="transition-delay:0.15s">
+        <span class="value-num">03</span>
+        <div class="value-title">NZ first</div>
+        <p class="value-desc">We design and photograph everything here. We know the waves. We know the light. We know what cold water looks like in the morning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="about-inner section-inner" style="max-width:1300px;">
+    <div class="about-img reveal"><span class="about-img-label">Raglan, Waikato — 2021</span></div>
+    <div class="reveal" style="transition-delay:0.1s">
+      <h2 class="section-title" style="margin-bottom:2rem;">Started in<br><em>a van.</em></h2>
+      <div class="about-body">
+        <p>Laylo started in 2021 when two people spent a summer driving between Raglan and Kaikōura trying to find surf clothing that didn't feel like it was designed by a committee in California.</p>
+        <p>They didn't find it. So they made it themselves. First drop was 80 tees out of a storage unit in Hamilton. They sold in four days.</p>
+        <p>We're still small on purpose. Limited drops. No middlemen. When something sells out, it stays out until we can make more properly.</p>
+      </div>
+      <div class="about-tags">
+        <span class="about-tag">NZ Made</span>
+        <span class="about-tag">Organic Cotton</span>
+        <span class="about-tag">SEAQUAL Thread</span>
+        <span class="about-tag">Carbon Neutral</span>
+        <span class="about-tag">Since 2021</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div><span class="footer-wordmark">Laylo</span><p class="footer-tagline">Sun. Salt. Laylo. Surf-inspired clothing for New Zealanders who live close to the water.</p></div>
+    <div><span class="footer-col-title">Shop</span><div class="footer-links"><a href="#">New Season</a><a href="#">Boardshorts</a><a href="#">Tops & Tees</a><a href="#">Accessories</a></div></div>
+    <div><span class="footer-col-title">Info</span><div class="footer-links"><a href="#">Our Story</a><a href="#">Sustainability</a><a href="#">Sizing</a><a href="#">Returns</a><a href="#">Contact</a></div></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Laylo Surf Ltd. New Zealand.</span>
+    <span class="footer-cp">Site by <a href="https://coldpress.co.nz" target="_blank">Cold Press</a></span>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
