@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio — Cold Press</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#F7F5F1;--text:#111111;--accent:#C4405F;--grey:#888880;--dark:#0D0D0D;--border:rgba(17,17,17,0.08);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px 200px;}
+.label{font-family:'Inter',sans-serif;font-size:10px;font-weight:500;letter-spacing:4px;text-transform:uppercase;color:var(--grey);}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important;}}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 5%;background:rgba(247,245,241,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px;}
+.nav-wordmark{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.25rem;letter-spacing:-0.02em;color:var(--text);text-decoration:none;}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none;}
+.nav-links a{font-size:11px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--text);text-decoration:none;transition:color .2s;}
+.nav-links a:hover,.nav-active{color:var(--accent)!important;}
+.nav-talk{color:var(--accent)!important;}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:0.4rem;flex-direction:column;gap:5px;}
+.nav-toggle span{display:block;width:24px;height:1.5px;background:var(--text);transition:transform .3s,opacity .3s;}
+.nav-toggle.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg);}
+.nav-toggle.open span:nth-child(2){opacity:0;}
+.nav-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg);}
+.nav-mobile-overlay{display:none;position:fixed;inset:0;z-index:400;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;gap:3rem;}
+.nav-mobile-overlay.open{display:flex;}
+.nav-mobile-overlay a{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(3rem,12vw,6rem);letter-spacing:-0.02em;color:var(--text);text-decoration:none;line-height:1;transition:color .2s;}
+.nav-mobile-overlay a:hover{color:var(--accent);}
+.nav-mobile-overlay .mobile-talk{color:var(--accent);}
+@media(max-width:768px){.nav-links{display:none;}.nav-toggle{display:flex;}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.reveal-slow{opacity:0;transition:opacity 1s ease;}
+.reveal-slow.visible{opacity:1;}
+
+/* LAYOUT */
+.section-inner{max-width:1200px;margin:0 auto;padding:0 5%;}
+.section-pad{padding:120px 0;}
+@media(max-width:768px){.section-pad{padding:80px 0;}}
+.section-label-row{display:flex;align-items:center;gap:16px;margin-bottom:2.5rem;}
+.section-label-dash{display:block;width:28px;height:1px;background:var(--grey);flex-shrink:0;}
+
+/* HERO */
+.studio-hero{
+  padding-top:64px; min-height:100vh;
+  display:flex; flex-direction:column; justify-content:flex-end;
+  padding-left:5%; padding-right:5%; padding-bottom:8rem;
+  position:relative; overflow:hidden;
+}
+.studio-hero-inner{max-width:1200px;margin:0 auto;width:100%;}
+.studio-hero-number{
+  position:absolute; right:4%; top:50%; transform:translateY(-50%);
+  font-family:'Barlow Condensed',sans-serif; font-weight:900;
+  font-size:clamp(240px,35vw,420px); line-height:1;
+  color:rgba(17,17,17,0.025); pointer-events:none;
+  letter-spacing:-0.05em;
+  user-select:none;
+}
+.studio-hero-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900; letter-spacing:-0.03em;
+  font-size:clamp(4rem,10vw,10rem);
+  line-height:0.9; color:var(--text);
+  margin-bottom:2.5rem;
+}
+.studio-hero-title .accent{color:var(--accent);}
+.studio-hero-standalones{display:flex;flex-direction:column;gap:1.2rem;max-width:620px;}
+.standalone-line{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900; letter-spacing:-0.02em;
+  font-size:clamp(1.4rem,2.5vw,2rem);
+  color:var(--text); line-height:1.1;
+  padding-bottom:1.2rem; border-bottom:1px solid var(--border);
+}
+.standalone-line:last-child{border-bottom:none;}
+
+/* ABOUT BODY */
+.about-section{}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:start;}
+.about-col-label{margin-bottom:2.5rem;}
+.about-headline{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900; letter-spacing:-0.03em;
+  font-size:clamp(2.5rem,5vw,4.5rem);
+  line-height:0.95; color:var(--text); margin-bottom:2.5rem;
+}
+.about-headline .accent{color:var(--accent);}
+.about-body{font-size:1.05rem;color:var(--grey);line-height:1.8;}
+.about-body p{margin-bottom:1.6rem;}
+.about-body p:last-child{margin-bottom:0;}
+.about-body strong{color:var(--text);font-weight:600;}
+.process-line{
+  font-size:0.95rem;color:var(--grey);line-height:1.7;
+  margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid var(--border);
+  max-width:480px;
+}
+.about-cta{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:11px;font-weight:500;letter-spacing:4px;text-transform:uppercase;
+  color:var(--text);text-decoration:none;margin-top:2rem;position:relative;
+}
+.about-cta::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.about-cta:hover{color:var(--accent);}
+.about-cta:hover::after{transform:scaleX(1);}
+
+/* People */
+.people-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-top:1rem;}
+.person-card{background:rgba(17,17,17,0.025);border-radius:12px;padding:2rem;}
+.person-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;letter-spacing:-0.02em;
+  font-size:2rem;color:var(--text);line-height:1;margin-bottom:0.4rem;
+}
+.person-role{font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+.person-bio{font-size:0.88rem;color:var(--grey);line-height:1.7;}
+
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr;gap:4rem;}
+  .people-grid{grid-template-columns:1fr;}
+}
+
+/* REFERENCES */
+.references-section{padding:120px 0 60px;}
+.references-heading{
+  font-size:11px;font-weight:500;letter-spacing:6px;
+  text-transform:uppercase;
+  color:rgba(136,136,128,0.2);
+  margin-bottom:3rem;
+  opacity:0;transform:translateY(16px);
+  transition:opacity 1.2s ease,transform 1.2s ease;
+}
+.references-heading.visible{opacity:1;transform:translateY(0);}
+
+.ref-cols{
+  columns:3;column-gap:4rem;
+}
+.ref-link{
+  display:block;break-inside:avoid;
+  font-size:11px;color:var(--grey);
+  text-decoration:none;line-height:1;
+  padding:0.55rem 0;
+  border-bottom:1px solid transparent;
+  transition:border-color .2s,color .2s;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.ref-link:hover{color:var(--text);border-color:rgba(17,17,17,0.12);}
+@media(max-width:768px){.ref-cols{columns:2;}.ref-link{white-space:normal;}}
+@media(max-width:480px){.ref-cols{columns:1;}}
+
+/* FOOTER */
+footer{padding:60px 5%;border-top:1px solid var(--border);}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+.footer-wordmark{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.15rem;letter-spacing:-0.02em;color:var(--text);text-decoration:none;display:block;margin-bottom:0.3rem;}
+.footer-sub{font-size:12px;color:var(--grey);}
+.footer-right{text-align:right;}
+.footer-right a{color:var(--grey);text-decoration:none;font-size:13px;border-bottom:1px solid transparent;transition:border-color .2s;display:block;margin-bottom:0.3rem;}
+.footer-right a:hover{border-color:var(--grey);}
+.footer-copy{font-size:12px;color:var(--grey);}
+.footer-final{max-width:1200px;margin:2.5rem auto 0;padding:0 5%;text-align:center;}
+.footer-final p{font-size:11px;color:rgba(136,136,128,0.5);letter-spacing:1px;line-height:2;}
+@media(max-width:600px){.footer-inner{grid-template-columns:1fr;}.footer-right{text-align:left;}}
+</style>
+</head>
+<body>
+
+<div class="nav-mobile-overlay" id="mobileOverlay">
+  <a href="index.html">Home</a>
+  <a href="work.html">Work</a>
+  <a href="studio.html" class="nav-active">Studio</a>
+  <a href="index.html#contact" class="mobile-talk">Let's talk.</a>
+</div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-wordmark">Cold Press</a>
+    <ul class="nav-links">
+      <li><a href="work.html">Work</a></li>
+      <li><a href="studio.html" class="nav-active">Studio</a></li>
+      <li><a href="index.html#contact" class="nav-talk">Let's talk.</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="studio-hero">
+  <div class="studio-hero-number">02</div>
+  <div class="studio-hero-inner">
+    <h1 class="studio-hero-title reveal">
+      Two people.<br><span class="accent">One obsession.</span>
+    </h1>
+    <div class="studio-hero-standalones">
+      <p class="standalone-line reveal" style="transition-delay:0.15s">
+        We'll tell you if we can't help.
+      </p>
+      <p class="standalone-line reveal" style="transition-delay:0.25s">
+        Every project gets the two people who built the studio — not an account manager and a junior.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section section-pad" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+
+      <div>
+        <div class="section-label-row reveal">
+          <span class="section-label-dash"></span>
+          <span class="label">The Studio</span>
+        </div>
+        <h2 class="about-headline reveal" style="transition-delay:0.1s">
+          What we<br>actually do.
+        </h2>
+        <div class="people-grid reveal" style="transition-delay:0.2s">
+          <div class="person-card">
+            <div class="person-name">Mitchell</div>
+            <div class="person-role">Brand · Strategy</div>
+            <p class="person-bio">Understands branding down to the bone. The one who knows what your brand should feel like before anyone else does.</p>
+          </div>
+          <div class="person-card">
+            <div class="person-name">Josh</div>
+            <div class="person-role">Build · Product</div>
+            <p class="person-bio">Can build anything from scratch. No templates. No shortcuts. If it needs to work on the internet, he's already figured out how.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="about-body reveal" style="transition-delay:0.1s">
+          <p>Most brands don't fail because the product is bad. They fail because nobody could see what made it good.</p>
+          <p>You don't have a product problem. You just haven't used what makes your brand tick yet. Whether you can't figure out how to make a website or you're already doing volume that just isn't converting — we can help.</p>
+          <p>Cold Press is Mitchell Corkery and Josh Ongley. One person who understands branding down to the bone. One who can build anything from scratch. We started this because real conviction deserves better than a template and a retainer. Between us there's no question we can't answer and no brief we can't diagnose. You get a straight answer every time — not the one that keeps the invoice going.</p>
+          <p>We want to find the next Patagonia before they can afford a proper launch. The first call a founder makes when they have a genuinely good idea — whether there's $200k behind it or they're still working the job. The kind of people still asking about your numbers four months later. Not because it's in the contract — because the day you can quit your job, we want to be the ones taking you to dinner. The twice a year kind.</p>
+          <p>That's not copy. That's conviction. That's actually the goal.</p>
+        </div>
+        <p class="process-line reveal" style="transition-delay:0.2s">
+          Before we quote you anything, we'll tell you exactly what we think your brand needs. Whether you hire us or not.
+        </p>
+        <a href="index.html#contact" class="about-cta reveal" style="transition-delay:0.25s">Work with us →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- REFERENCES -->
+<section class="references-section" id="references">
+  <div class="section-inner">
+    <h3 class="references-heading" id="refHeading">
+      BAD TASTE?&nbsp;&nbsp;&nbsp;NO BUDGET?&nbsp;&nbsp;&nbsp;NEED INSPIRATION?
+    </h3>
+    <div class="ref-cols reveal" style="transition-delay:0.1s">
+
+      <!-- Brands -->
+      <a class="ref-link" href="https://www.dimemtl.com" target="_blank" rel="noopener">Dime MTL</a>
+      <a class="ref-link" href="https://www.takomo.com" target="_blank" rel="noopener">Takomo Golf</a>
+      <a class="ref-link" href="https://www.bakerskateboards.com" target="_blank" rel="noopener">Baker Skateboards</a>
+      <a class="ref-link" href="https://feralsupplements.com" target="_blank" rel="noopener">Feral Supplements</a>
+      <a class="ref-link" href="https://www.iloveuglyclothing.com" target="_blank" rel="noopener">I Love Ugly</a>
+      <a class="ref-link" href="https://www.aesop.com" target="_blank" rel="noopener">Aesop</a>
+      <a class="ref-link" href="https://lskd.co" target="_blank" rel="noopener">LSKD</a>
+      <a class="ref-link" href="https://arcteryx.com" target="_blank" rel="noopener">Arc'teryx</a>
+      <a class="ref-link" href="https://www.patagonia.com" target="_blank" rel="noopener">Patagonia</a>
+      <a class="ref-link" href="https://www.supremenewyork.com" target="_blank" rel="noopener">Supreme</a>
+      <a class="ref-link" href="https://www.carhartt-wip.com" target="_blank" rel="noopener">Carhartt WIP</a>
+      <a class="ref-link" href="https://palaceskateboards.com" target="_blank" rel="noopener">Palace Skateboards</a>
+
+      <!-- Music -->
+      <a class="ref-link" href="https://open.spotify.com/album/0FGHqQBqFPkJCECGrXbXlZ" target="_blank" rel="noopener">Kendrick Lamar — GKMC</a>
+      <a class="ref-link" href="https://open.spotify.com/album/4eLPsYPBmXABThSJ821sqY" target="_blank" rel="noopener">Frank Ocean — Blonde</a>
+      <a class="ref-link" href="https://open.spotify.com/album/0bUTHlWbkSQysoM3VsWldT" target="_blank" rel="noopener">Kanye West — 808s</a>
+      <a class="ref-link" href="https://open.spotify.com/album/4SZko61aMnmgvNhfhgTuD3" target="_blank" rel="noopener">Tyler — Igor</a>
+      <a class="ref-link" href="https://open.spotify.com/album/4m2880jivSbbyEGAKfITCa" target="_blank" rel="noopener">Arca — KiCk i</a>
+      <a class="ref-link" href="https://open.spotify.com/album/0iEtIxbK0KqIZQ6gBMsCV5" target="_blank" rel="noopener">Burial — Untrue</a>
+
+      <!-- Studios & agencies -->
+      <a class="ref-link" href="https://pglang.org" target="_blank" rel="noopener">PG Lang</a>
+      <a class="ref-link" href="https://www.jkrglobal.com" target="_blank" rel="noopener">JKR London</a>
+      <a class="ref-link" href="https://koto.studio" target="_blank" rel="noopener">Koto</a>
+      <a class="ref-link" href="https://raggededge.com" target="_blank" rel="noopener">Ragged Edge</a>
+
+      <!-- Places -->
+      <a class="ref-link" href="https://maps.app.goo.gl/shimokitazawa" target="_blank" rel="noopener">Shimokitazawa, Tokyo</a>
+      <a class="ref-link" href="https://maps.app.goo.gl/fitzroy" target="_blank" rel="noopener">Fitzroy, Melbourne</a>
+
+      <!-- Film / TV -->
+      <a class="ref-link" href="https://www.netflix.com/title/80057883" target="_blank" rel="noopener">Abstract — Tinker Hatfield ep.</a>
+      <a class="ref-link" href="https://www.netflix.com/title/80214307" target="_blank" rel="noopener">The Last Dance</a>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <a href="index.html" class="footer-wordmark">Cold Press</a>
+      <p class="footer-sub">Mitch Corkery & Josh Ongley</p>
+    </div>
+    <div class="footer-right">
+      <a href="mailto:mitchell@coldpress.co.nz">mitchell@coldpress.co.nz</a>
+      <p class="footer-copy">Christchurch, NZ · 2026</p>
+    </div>
+  </div>
+  <div class="footer-final">
+    <p>Based in Christchurch. Building for everywhere.</p>
+    <p>If something here felt like it was written for you — it was.</p>
+  </div>
+</footer>
+
+<script>
+const navToggle=document.getElementById('navToggle'),mo=document.getElementById('mobileOverlay');
+navToggle.addEventListener('click',()=>{navToggle.classList.toggle('open');mo.classList.toggle('open');document.body.style.overflow=mo.classList.contains('open')?'hidden':'';});
+
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// References heading fades in slower
+const refObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');refObs.unobserve(e.target);}});},{threshold:0.2});
+refObs.observe(document.getElementById('refHeading'));
+</script>
+</body>
+</html>
