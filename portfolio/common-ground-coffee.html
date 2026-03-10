@@ -1,1 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Common Ground Coffee — Christchurch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --espresso:#1A0F0A;
+  --roast:#2D1810;
+  --card:#231308;
+  --cream:#F5EDD8;
+  --warm:#EDE0C4;
+  --sand:#D4C4A0;
+  --grey:#8A7A68;
+  --border:rgba(245,237,216,0.08);
+  --accent:#C47C3A;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--espresso);color:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;}
 
+/* NAV */
+#mainNav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 5%;}
+#mainNav.scrolled{background:rgba(26,15,10,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px;}
+.nav-wordmark{font-family:'Playfair Display',serif;font-size:1.1rem;font-style:italic;color:var(--cream);text-decoration:none;letter-spacing:0.02em;}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none;}
+.nav-links a{font-size:11px;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:rgba(245,237,216,0.5);text-decoration:none;transition:color 0.2s;}
+.nav-links a:hover{color:var(--cream);}
+.nav-wholesale{color:var(--accent)!important;border-bottom:1px solid var(--accent);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 5% 7rem;padding-top:70px;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 20% 80%, rgba(196,124,58,0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(45,24,16,0.8) 0%, transparent 60%);}
+.hero-inner{max-width:1200px;margin:0 auto;width:100%;position:relative;z-index:2;}
+.hero-eyebrow{display:flex;align-items:center;gap:1.5rem;margin-bottom:3rem;}
+.hero-eyebrow-line{width:40px;height:1px;background:var(--accent);}
+.hero-eyebrow-text{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);}
+.hero-title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(3.5rem,8vw,9rem);line-height:0.95;color:var(--cream);margin-bottom:3rem;}
+.hero-title em{font-style:italic;color:var(--accent);}
+.hero-bottom{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem;}
+.hero-desc{font-size:1rem;color:rgba(245,237,216,0.45);line-height:1.8;max-width:380px;}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-cream{background:var(--cream);color:var(--espresso);padding:0.9rem 2.5rem;font-size:11px;font-weight:600;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:background 0.2s;}
+.btn-cream:hover{background:var(--warm);}
+.btn-ghost{border:1px solid rgba(245,237,216,0.2);color:var(--cream);padding:0.9rem 2.5rem;font-size:11px;font-weight:400;letter-spacing:3px;text-transform:uppercase;text-decoration:none;transition:border-color 0.2s;}
+.btn-ghost:hover{border-color:rgba(245,237,216,0.5);}
+
+/* ORIGIN STRIP */
+.origin-strip{background:var(--roast);padding:0 5%;border-top:1px solid var(--border);}
+.origin-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);border-left:1px solid var(--border);}
+.origin-item{padding:2.5rem 2rem;border-right:1px solid var(--border);}
+.origin-country{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:var(--cream);display:block;margin-bottom:0.3rem;}
+.origin-region{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(245,237,216,0.35);}
+.origin-process{font-size:0.8rem;color:var(--accent);margin-top:0.5rem;}
+
+/* COFFEE */
+.coffees{padding:120px 5%;}
+.section-inner{max-width:1200px;margin:0 auto;}
+.section-header{margin-bottom:5rem;}
+.section-title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(2.5rem,5vw,5rem);line-height:1;color:var(--cream);margin-bottom:1rem;}
+.section-title em{font-style:italic;color:var(--accent);}
+.section-sub{font-size:0.95rem;color:rgba(245,237,216,0.4);line-height:1.7;max-width:450px;}
+.coffee-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);}
+.coffee-card{background:var(--card);padding:3rem 2.5rem;cursor:pointer;transition:background 0.2s;position:relative;}
+.coffee-card:hover{background:#2d1a0e;}
+.coffee-card-num{font-family:'Playfair Display',serif;font-size:0.75rem;font-style:italic;color:rgba(245,237,216,0.15);position:absolute;top:2rem;right:2rem;}
+.coffee-origin{font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:1.2rem;display:block;}
+.coffee-name{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--cream);margin-bottom:0.5rem;}
+.coffee-region{font-size:0.82rem;color:rgba(245,237,216,0.35);margin-bottom:1.5rem;}
+.coffee-notes{display:flex;flex-wrap:wrap;gap:0.4rem;margin-bottom:2rem;}
+.coffee-note{font-size:10px;letter-spacing:1px;padding:0.2rem 0.7rem;border:1px solid rgba(245,237,216,0.1);color:rgba(245,237,216,0.45);}
+.coffee-process{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(196,124,58,0.6);}
+.coffee-price{font-size:0.9rem;color:var(--cream);margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border);}
+
+/* WHOLESALE */
+.wholesale{padding:120px 5%;background:var(--roast);}
+.wholesale-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:8rem;align-items:center;}
+.wholesale-body{}
+.wholesale-body p{font-size:1rem;color:rgba(245,237,216,0.5);line-height:1.85;margin-bottom:1.5rem;}
+.wholesale-body p:last-of-type{margin-bottom:2.5rem;}
+.wholesale-tiers{display:flex;flex-direction:column;gap:1px;background:var(--border);border:1px solid var(--border);}
+.tier{background:var(--card);padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;}
+.tier-name{font-family:'Playfair Display',serif;font-size:1rem;color:var(--cream);}
+.tier-detail{font-size:0.82rem;color:rgba(245,237,216,0.35);}
+.tier-price{font-size:0.9rem;color:var(--accent);}
+
+/* CAFE */
+.cafe{padding:120px 5%;}
+.cafe-inner{max-width:1200px;margin:0 auto;}
+.cafe-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:4rem;}
+.cafe-visual{background:var(--roast);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;border:1px solid var(--border);}
+.cafe-visual-label{font-family:'Playfair Display',serif;font-size:0.85rem;font-style:italic;color:rgba(245,237,216,0.2);}
+.cafe-info{display:flex;flex-direction:column;justify-content:center;padding:2rem 0;}
+.cafe-info p{font-size:0.95rem;color:rgba(245,237,216,0.45);line-height:1.8;margin-bottom:1.5rem;}
+.cafe-detail-rows{display:flex;flex-direction:column;gap:0.8rem;padding-top:2rem;border-top:1px solid var(--border);}
+.cafe-detail-row{display:flex;justify-content:space-between;font-size:0.88rem;}
+.cafe-detail-key{color:rgba(245,237,216,0.3);}
+.cafe-detail-val{color:var(--cream);}
+
+/* FOOTER */
+footer{background:var(--card);padding:60px 5% 30px;border-top:1px solid var(--border);}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:4rem;margin-bottom:3rem;}
+.footer-wordmark{font-family:'Playfair Display',serif;font-size:1.2rem;font-style:italic;color:var(--cream);display:block;margin-bottom:0.5rem;}
+.footer-tagline{font-size:0.82rem;color:rgba(245,237,216,0.3);line-height:1.7;max-width:240px;}
+.footer-col-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,237,216,0.2);margin-bottom:1.2rem;display:block;}
+.footer-links{display:flex;flex-direction:column;gap:0.6rem;}
+.footer-links a{font-size:0.85rem;color:rgba(245,237,216,0.4);text-decoration:none;transition:color 0.2s;}
+.footer-links a:hover{color:var(--cream);}
+.footer-bottom{max-width:1200px;margin:0 auto;padding-top:2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.footer-copy{font-size:11px;color:rgba(245,237,216,0.2);}
+.footer-cp{font-size:11px;color:rgba(245,237,216,0.2);}
+.footer-cp a{color:rgba(245,237,216,0.3);text-decoration:none;border-bottom:1px solid rgba(245,237,216,0.12);}
+.footer-cp a:hover{color:var(--accent);}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+@media(max-width:900px){.nav-links{display:none;}.hero-bottom{flex-direction:column;align-items:flex-start;}.origin-inner{grid-template-columns:1fr 1fr;}.coffee-grid{grid-template-columns:1fr;}.wholesale-inner{grid-template-columns:1fr;gap:4rem;}.cafe-grid{grid-template-columns:1fr;}.footer-inner{grid-template-columns:1fr;gap:2rem;}}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <div class="nav-inner">
+    <a href="#" class="nav-wordmark">Common Ground</a>
+    <ul class="nav-links">
+      <li><a href="#coffees">Our Coffees</a></li>
+      <li><a href="#cafe">Café</a></li>
+      <li><a href="#wholesale" class="nav-wholesale">Wholesale</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow"><div class="hero-eyebrow-line"></div><span class="hero-eyebrow-text">Specialty Coffee · Christchurch</span></div>
+    <h1 class="hero-title">Coffee worth<br>talking <em>about.</em></h1>
+    <div class="hero-bottom">
+      <p class="hero-desc">Single origin. Small batch. Roasted in Christchurch, sourced from farms we visit in person.</p>
+      <div class="hero-ctas">
+        <a href="#coffees" class="btn-cream">Shop Coffee</a>
+        <a href="#wholesale" class="btn-ghost">Wholesale Enquiry</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="origin-strip">
+  <div class="origin-inner">
+    <div class="origin-item"><span class="origin-country">Ethiopia</span><span class="origin-region">Yirgacheffe · Gedeo Zone</span><span class="origin-process">Natural Process</span></div>
+    <div class="origin-item"><span class="origin-country">Colombia</span><span class="origin-region">Huila · Los Pinos</span><span class="origin-process">Washed</span></div>
+    <div class="origin-item"><span class="origin-country">Guatemala</span><span class="origin-region">Acatenango · El Calvario</span><span class="origin-process">Honey Process</span></div>
+    <div class="origin-item"><span class="origin-country">Kenya</span><span class="origin-region">Kirinyaga · Ngariama</span><span class="origin-process">Double Washed</span></div>
+  </div>
+</div>
+
+<section class="coffees" id="coffees">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <h2 class="section-title">Current<br><em>roast.</em></h2>
+      <p class="section-sub">We roast in small batches every Tuesday and Friday. Everything on this page is roasted this week.</p>
+    </div>
+    <div class="coffee-grid">
+      <div class="coffee-card reveal" style="transition-delay:0.05s">
+        <span class="coffee-card-num">01</span>
+        <span class="coffee-origin">Ethiopia · Yirgacheffe</span>
+        <div class="coffee-name">Halo Beriti</div>
+        <div class="coffee-region">Natural Process · 1900–2200m</div>
+        <div class="coffee-notes"><span class="coffee-note">Blueberry</span><span class="coffee-note">Dark Chocolate</span><span class="coffee-note">Florals</span></div>
+        <div class="coffee-process">Filter Roast</div>
+        <div class="coffee-price">$28 / 250g</div>
+      </div>
+      <div class="coffee-card reveal" style="transition-delay:0.1s">
+        <span class="coffee-card-num">02</span>
+        <span class="coffee-origin">Colombia · Huila</span>
+        <div class="coffee-name">Los Pinos</div>
+        <div class="coffee-region">Washed · 1800m</div>
+        <div class="coffee-notes"><span class="coffee-note">Caramel</span><span class="coffee-note">Red Apple</span><span class="coffee-note">Honey</span></div>
+        <div class="coffee-process">Espresso / Filter</div>
+        <div class="coffee-price">$26 / 250g</div>
+      </div>
+      <div class="coffee-card reveal" style="transition-delay:0.15s">
+        <span class="coffee-card-num">03</span>
+        <span class="coffee-origin">Kenya · Kirinyaga</span>
+        <div class="coffee-name">Ngariama AA</div>
+        <div class="coffee-region">Double Washed · 1750m</div>
+        <div class="coffee-notes"><span class="coffee-note">Blackcurrant</span><span class="coffee-note">Grapefruit</span><span class="coffee-note">Black Tea</span></div>
+        <div class="coffee-process">Filter Roast</div>
+        <div class="coffee-price">$30 / 250g</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wholesale" id="wholesale">
+  <div class="wholesale-inner section-inner" style="max-width:1200px;">
+    <div>
+      <span style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:1.5rem;" class="reveal">— Wholesale</span>
+      <h2 class="section-title reveal" style="transition-delay:0.1s;margin-bottom:2rem;">For cafés<br><em>who care.</em></h2>
+      <div class="wholesale-body reveal" style="transition-delay:0.15s">
+        <p>We supply cafés, restaurants, and offices across Canterbury and beyond. Every wholesale account gets a dedicated roaster contact, training if you need it, and coffee that won't embarrass you.</p>
+        <p>We're not trying to be on every counter in New Zealand. We're trying to be on the right ones.</p>
+        <a href="#contact" class="btn-cream" style="display:inline-block;">Wholesale Enquiry →</a>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:0.1s">
+      <div class="wholesale-tiers">
+        <div class="tier"><div><div class="tier-name">Café Starter</div><div class="tier-detail">From 3kg/week</div></div><div class="tier-price">From $28/kg</div></div>
+        <div class="tier"><div><div class="tier-name">Restaurant Partner</div><div class="tier-detail">From 6kg/week</div></div><div class="tier-price">From $25/kg</div></div>
+        <div class="tier"><div><div class="tier-name">Office Supply</div><div class="tier-detail">Weekly or fortnightly</div></div><div class="tier-price">Custom pricing</div></div>
+        <div class="tier"><div><div class="tier-name">Custom Roast</div><div class="tier-detail">House blend development</div></div><div class="tier-price">Talk to us</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cafe" id="cafe">
+  <div class="cafe-inner">
+    <div class="reveal">
+      <span style="font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:1.5rem;">— The Café</span>
+      <h2 class="section-title" style="margin-bottom:0;">Come and<br><em>taste it.</em></h2>
+    </div>
+    <div class="cafe-grid">
+      <div class="cafe-visual reveal"><span class="cafe-visual-label">Lichfield Street, Christchurch</span></div>
+      <div class="cafe-info reveal" style="transition-delay:0.1s">
+        <p>We're at 74 Lichfield Street in the CBD. There's filter coffee on the bar at all times. Espresso from whatever's best this week. We'll tell you what it is and where it's from.</p>
+        <p>No loyalty apps. No capsules. Just really good coffee from people who know exactly where it came from.</p>
+        <div class="cafe-detail-rows">
+          <div class="cafe-detail-row"><span class="cafe-detail-key">Address</span><span class="cafe-detail-val">74 Lichfield Street, Christchurch</span></div>
+          <div class="cafe-detail-row"><span class="cafe-detail-key">Mon – Fri</span><span class="cafe-detail-val">7am – 4pm</span></div>
+          <div class="cafe-detail-row"><span class="cafe-detail-key">Saturday</span><span class="cafe-detail-val">8am – 2pm</span></div>
+          <div class="cafe-detail-row"><span class="cafe-detail-key">Sunday</span><span class="cafe-detail-val">Closed</span></div>
+          <div class="cafe-detail-row"><span class="cafe-detail-key">Email</span><span class="cafe-detail-val">hello@commongroundcoffee.co.nz</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div><span class="footer-wordmark">Common Ground</span><p class="footer-tagline">Single origin specialty coffee, roasted in Christchurch. Wholesale enquiries welcome.</p></div>
+    <div><span class="footer-col-title">Coffee</span><div class="footer-links"><a href="#">Current Roast</a><a href="#">Subscriptions</a><a href="#">Wholesale</a><a href="#">Gift Cards</a></div></div>
+    <div><span class="footer-col-title">Visit</span><div class="footer-links"><a href="#">The Café</a><a href="#">Our Story</a><a href="#">Contact</a><a href="#">Instagram</a></div></div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Common Ground Coffee. Christchurch, New Zealand.</span>
+    <span class="footer-cp">Site by <a href="https://coldpress.co.nz" target="_blank">Cold Press</a></span>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
