@@ -141,6 +141,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;padding:0 5%;background:rgba
 
 /* REFERENCES */
 .references-section{padding:120px 0 60px;}
+
+.refs-more-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  color: var(--grey);
+  padding: 1.2rem 0 0.5rem;
+  letter-spacing: 0.5px;
+  display: block;
+  transition: color 0.2s;
+}
+.refs-more-btn:hover { color: var(--text); }
+
 .references-heading{
   font-size:11px;font-weight:500;letter-spacing:6px;
   text-transform:uppercase;
@@ -206,19 +221,11 @@ footer{padding:60px 5%;border-top:1px solid var(--border);}
 
 <!-- HERO -->
 <section class="studio-hero">
-  <div class="studio-hero-number">02</div>
-  <div class="studio-hero-inner">
+<div class="studio-hero-inner">
     <h1 class="studio-hero-title reveal">
       Two people.<br><span class="accent">One obsession.</span>
     </h1>
-    <div class="studio-hero-standalones">
-      <p class="standalone-line reveal" style="transition-delay:0.15s">
-        We'll tell you if we can't help.
-      </p>
-      <p class="standalone-line reveal" style="transition-delay:0.25s">
-        Every project gets the two people who built the studio — not an account manager and a junior.
-      </p>
-    </div>
+
   </div>
 </section>
 
@@ -227,41 +234,18 @@ footer{padding:60px 5%;border-top:1px solid var(--border);}
   <div class="section-inner">
     <div class="about-grid">
 
-      <div>
-        <div class="section-label-row reveal">
-          <span class="section-label-dash"></span>
-          <span class="label">The Studio</span>
-        </div>
-        <h2 class="about-headline reveal" style="transition-delay:0.1s">
-          What we<br>actually do.
-        </h2>
-        <div class="people-grid reveal" style="transition-delay:0.2s">
-          <div class="person-card">
-            <div class="person-name">Mitchell</div>
-            <div class="person-role">Brand · Strategy</div>
-            <p class="person-bio">Understands branding down to the bone. The one who knows what your brand should feel like before anyone else does.</p>
-          </div>
-          <div class="person-card">
-            <div class="person-name">Josh</div>
-            <div class="person-role">Build · Product</div>
-            <p class="person-bio">Can build anything from scratch. No templates. No shortcuts. If it needs to work on the internet, he's already figured out how.</p>
-          </div>
-        </div>
-      </div>
-
-      <div>
-        <div class="about-body reveal" style="transition-delay:0.1s">
-          <p>Most brands don't fail because the product is bad. They fail because nobody could see what made it good.</p>
-          <p>You don't have a product problem. You just haven't used what makes your brand tick yet. Whether you can't figure out how to make a website or you're already doing volume that just isn't converting — we can help.</p>
-          <p>Cold Press is Mitchell Corkery and Josh Ongley. One person who understands branding down to the bone. One who can build anything from scratch. We started this because real conviction deserves better than a template and a retainer. Between us there's no question we can't answer and no brief we can't diagnose. You get a straight answer every time — not the one that keeps the invoice going.</p>
-          <p>We want to find the next Patagonia before they can afford a proper launch. The first call a founder makes when they have a genuinely good idea — whether there's $200k behind it or they're still working the job. The kind of people still asking about your numbers four months later. Not because it's in the contract — because the day you can quit your job, we want to be the ones taking you to dinner. The twice a year kind.</p>
-          <p>That's not copy. That's conviction. That's actually the goal.</p>
+      <div class="about-body reveal" style="transition-delay:0.1s">
+          <p>Most brands don't fail because the product is bad.<br>They fail because nobody could figure out what made it good.</p>
+          <p>You don't have a product problem. You just haven't been told what makes your brand unique. Whether you can't figure out how to make a website or you're already doing volume that just isn't converting — we can help.</p>
+          <p>Cold Press is Mitchell Corkery and Josh Ongley. One person who understands branding down to the bone — who can walk into what you've built, see exactly what it is against what it could be, and tell you the gap before you've finished your sentence. One who can build anything from scratch. The kind of builder who looks at a complex brief and says yeah, that's doable — and usually starts before the meeting's over.</p>
+          <p>We started this because real brands deserve better than a template and a retainer — even if they don't have a huge following. Between us there's no question we can't answer and no brief we can't diagnose. You get the honest answer every time — not the one that keeps the invoice going.</p>
+          <p>We want to find the next Patagonia before they can afford a proper launch. The first call a founder makes when they have a genuinely good idea — whether there's $200k behind it or they're still working their job. The kind of people still asking about your numbers four months later. Not because it's in the contract — because the day you can quit your job, we want to be the ones that know.</p>
+          <p>That's not copy. That's the conviction we carry through our work.</p>
         </div>
         <p class="process-line reveal" style="transition-delay:0.2s">
           Before we quote you anything, we'll tell you exactly what we think your brand needs. Whether you hire us or not.
         </p>
         <a href="index.html#contact" class="about-cta reveal" style="transition-delay:0.25s">Work with us →</a>
-      </div>
 
     </div>
   </div>
@@ -270,12 +254,7 @@ footer{padding:60px 5%;border-top:1px solid var(--border);}
 <!-- REFERENCES -->
 <section class="references-section" id="references">
   <div class="section-inner">
-    <h3 class="references-heading" id="refHeading">
-      BAD TASTE?&nbsp;&nbsp;&nbsp;NO BUDGET?&nbsp;&nbsp;&nbsp;NEED INSPIRATION?
-    </h3>
-    <div class="ref-cols reveal" style="transition-delay:0.1s">
-
-      <!-- Brands -->
+    <div class="ref-cols" id="refColsVisible">
       <a class="ref-link" href="https://www.dimemtl.com" target="_blank" rel="noopener">Dime MTL</a>
       <a class="ref-link" href="https://www.takomo.com" target="_blank" rel="noopener">Takomo Golf</a>
       <a class="ref-link" href="https://www.bakerskateboards.com" target="_blank" rel="noopener">Baker Skateboards</a>
@@ -285,32 +264,47 @@ footer{padding:60px 5%;border-top:1px solid var(--border);}
       <a class="ref-link" href="https://lskd.co" target="_blank" rel="noopener">LSKD</a>
       <a class="ref-link" href="https://arcteryx.com" target="_blank" rel="noopener">Arc'teryx</a>
       <a class="ref-link" href="https://www.patagonia.com" target="_blank" rel="noopener">Patagonia</a>
-      <a class="ref-link" href="https://www.supremenewyork.com" target="_blank" rel="noopener">Supreme</a>
-      <a class="ref-link" href="https://www.carhartt-wip.com" target="_blank" rel="noopener">Carhartt WIP</a>
-      <a class="ref-link" href="https://palaceskateboards.com" target="_blank" rel="noopener">Palace Skateboards</a>
-
-      <!-- Music -->
-      <a class="ref-link" href="https://open.spotify.com/album/0FGHqQBqFPkJCECGrXbXlZ" target="_blank" rel="noopener">Kendrick Lamar — GKMC</a>
+      <a class="ref-link" href="https://engineeredgarments.com" target="_blank" rel="noopener">Engineered Garments</a>
+      <a class="ref-link" href="https://open.spotify.com/album/7ycBtnsMtyVbbwTfJwRjSP" target="_blank" rel="noopener">Kendrick Lamar — To Pimp a Butterfly</a>
       <a class="ref-link" href="https://open.spotify.com/album/4eLPsYPBmXABThSJ821sqY" target="_blank" rel="noopener">Frank Ocean — Blonde</a>
-      <a class="ref-link" href="https://open.spotify.com/album/0bUTHlWbkSQysoM3VsWldT" target="_blank" rel="noopener">Kanye West — 808s</a>
-      <a class="ref-link" href="https://open.spotify.com/album/4SZko61aMnmgvNhfhgTuD3" target="_blank" rel="noopener">Tyler — Igor</a>
-      <a class="ref-link" href="https://open.spotify.com/album/4m2880jivSbbyEGAKfITCa" target="_blank" rel="noopener">Arca — KiCk i</a>
+      <a class="ref-link" href="https://open.spotify.com/album/0bUTHlWbkSQysoM3VsWldT" target="_blank" rel="noopener">Kanye West — 808s &amp; Heartbreak</a>
+      <a class="ref-link" href="https://open.spotify.com/album/4SZko61aMnmgvNhfhgTuD3" target="_blank" rel="noopener">Tyler the Creator — Igor</a>
       <a class="ref-link" href="https://open.spotify.com/album/0iEtIxbK0KqIZQ6gBMsCV5" target="_blank" rel="noopener">Burial — Untrue</a>
-
-      <!-- Studios & agencies -->
+      <a class="ref-link" href="https://open.spotify.com/album/3539EbNgIdEDGBKkUf4wno" target="_blank" rel="noopener">Portishead — Dummy</a>
+      <a class="ref-link" href="https://open.spotify.com/album/2RM4jf1Xa9zPgMGRDiht8O" target="_blank" rel="noopener">Talk Talk — Spirit of Eden</a>
       <a class="ref-link" href="https://pglang.org" target="_blank" rel="noopener">PG Lang</a>
       <a class="ref-link" href="https://www.jkrglobal.com" target="_blank" rel="noopener">JKR London</a>
+      <a class="ref-link" href="https://maps.app.goo.gl/shimokitazawa" target="_blank" rel="noopener">Shimokitazawa, Tokyo</a>
+    </div>
+
+    <button class="refs-more-btn" id="refsMoreBtn" onclick="expandRefs()">— more —</button>
+
+    <div class="ref-cols" id="refColsHidden" style="display:none;">
+      <a class="ref-link" href="https://www.neighborhoodtokyo.com" target="_blank" rel="noopener">Neighborhood Tokyo</a>
+      <a class="ref-link" href="https://visvim.tv" target="_blank" rel="noopener">Visvim</a>
+      <a class="ref-link" href="https://cactusplantfleamarket.com" target="_blank" rel="noopener">Cactus Plant Flea Market</a>
+      <a class="ref-link" href="https://www.ourlegacy.se" target="_blank" rel="noopener">Our Legacy</a>
+      <a class="ref-link" href="https://www.stone-island.com" target="_blank" rel="noopener">Stone Island</a>
+      <a class="ref-link" href="https://open.spotify.com/album/4SZko61aMnmgvNhfhgTuD3" target="_blank" rel="noopener">Arca — KiCk i</a>
+      <a class="ref-link" href="https://open.spotify.com/album/2RM4jf1Xa9zPgMGRDiht8O" target="_blank" rel="noopener">Masayoshi Takanaka — An Insatiable High</a>
+      <a class="ref-link" href="https://open.spotify.com/album/1BZoqdefEryfF1TOFMLPLv" target="_blank" rel="noopener">Lauryn Hill — The Miseducation of Lauryn Hill</a>
+      <a class="ref-link" href="https://open.spotify.com/album/7bnTFZvEXNDNMXa3ggcAqq" target="_blank" rel="noopener">Aphex Twin — Selected Ambient Works Vol. II</a>
+      <a class="ref-link" href="https://open.spotify.com/album/3eSyMBd7ERw68NVB3jlRmW" target="_blank" rel="noopener">Four Tet — Rounds</a>
+      <a class="ref-link" href="https://open.spotify.com/album/1vz94x8P9xNhMI8HhKT8V1" target="_blank" rel="noopener">Bon Iver — For Emma, Forever Ago</a>
+      <a class="ref-link" href="https://open.spotify.com/album/1w9O7bS9zOBSMdgMpHaLz2" target="_blank" rel="noopener">Steve Reich — Music for 18 Musicians</a>
+      <a class="ref-link" href="https://open.spotify.com/album/3kEtdS2pH6hKcMU9Wioob1" target="_blank" rel="noopener">Nas — Illmatic</a>
       <a class="ref-link" href="https://koto.studio" target="_blank" rel="noopener">Koto</a>
       <a class="ref-link" href="https://raggededge.com" target="_blank" rel="noopener">Ragged Edge</a>
-
-      <!-- Places -->
-      <a class="ref-link" href="https://maps.app.goo.gl/shimokitazawa" target="_blank" rel="noopener">Shimokitazawa, Tokyo</a>
+      <a class="ref-link" href="https://gretelny.com" target="_blank" rel="noopener">Gretel NYC</a>
+      <a class="ref-link" href="https://dia.tv" target="_blank" rel="noopener">DIA Studio</a>
+      <a class="ref-link" href="https://hecklerdesign.com" target="_blank" rel="noopener">Heckler</a>
       <a class="ref-link" href="https://maps.app.goo.gl/fitzroy" target="_blank" rel="noopener">Fitzroy, Melbourne</a>
-
-      <!-- Film / TV -->
-      <a class="ref-link" href="https://www.netflix.com/title/80057883" target="_blank" rel="noopener">Abstract — Tinker Hatfield ep.</a>
-      <a class="ref-link" href="https://www.netflix.com/title/80214307" target="_blank" rel="noopener">The Last Dance</a>
-
+      <a class="ref-link" href="https://maps.app.goo.gl/surry-hills" target="_blank" rel="noopener">Surry Hills, Sydney</a>
+      <a class="ref-link" href="https://www.netflix.com/title/80144751" target="_blank" rel="noopener">Abstract — Tinker Hatfield ep.</a>
+      <a class="ref-link" href="https://www.criterion.com/films/28494-jiro-dreams-of-sushi" target="_blank" rel="noopener">Jiro Dreams of Sushi</a>
+      <a class="ref-link" href="https://www.imdb.com/title/tt1587707/" target="_blank" rel="noopener">Exit Through the Gift Shop</a>
+      <a class="ref-link" href="https://www.netflix.com/title/80204886" target="_blank" rel="noopener">The Last Dance</a>
+      <a class="ref-link" href="https://www.imdb.com/title/tt0770802/" target="_blank" rel="noopener">Samsara</a>
     </div>
   </div>
 </section>
@@ -322,17 +316,22 @@ footer{padding:60px 5%;border-top:1px solid var(--border);}
       <p class="footer-sub">Mitch Corkery & Josh Ongley</p>
     </div>
     <div class="footer-right">
-      <a href="/cdn-cgi/l/email-protection#b5d8dcc1d6ddd0d9d9f5d6dad9d1c5c7d0c6c69bd6da9bdbcf"><span class="__cf_email__" data-cfemail="dbb6b2afb8b3beb7b79bb8b4b7bfaba9bea8a8f5b8b4f5b5a1">[email&#160;protected]</span></a>
+      <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;mitchell&#64;coldpress.co.nz">mitchell&#64;coldpress.co.nz</a>
       <p class="footer-copy">Christchurch, NZ · 2026</p>
     </div>
   </div>
   <div class="footer-final">
     <p>Based in Christchurch. Building for everywhere.</p>
-    <p>If something here felt like it was written for you — it was.</p>
+    <p><a href="#references" style="display:block;font-size:11px;color:rgba(136,136,128,0.5);text-decoration:none;letter-spacing:1px;margin-bottom:0.5rem;transition:color 0.2s;" onmouseover="this.style.color='#111'" onmouseout="this.style.color='rgba(136,136,128,0.5)'">references</a>If something here felt like it was written for you — it was.</p>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
+function expandRefs() {
+  document.getElementById('refColsHidden').style.display = '';
+  document.getElementById('refsMoreBtn').style.display = 'none';
+}
+
 const navToggle=document.getElementById('navToggle'),mo=document.getElementById('mobileOverlay');
 navToggle.addEventListener('click',()=>{navToggle.classList.toggle('open');mo.classList.toggle('open');document.body.style.overflow=mo.classList.contains('open')?'hidden':'';});
 
